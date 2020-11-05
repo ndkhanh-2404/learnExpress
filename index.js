@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+var cookieParser = require('cookie-parser')
 var userRoute =  require('./routes/user.route');
 const { use } = require('./routes/user.route');
 
@@ -9,7 +9,7 @@ const port = 3000;
 const app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
-
+app.use(cookieParser())
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
