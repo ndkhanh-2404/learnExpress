@@ -13,10 +13,10 @@ const port = 3000;
 const app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
-app.use(cookieParser())
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(cookieParser('dasdasdasv3rqwasdas2232'));
 
 app.use(express.static('public'));
 
