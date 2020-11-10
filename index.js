@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')
 var userRoute =  require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
+
+var authMiddleware = require("./middlewares/auth.middleware");
+
 const { use } = require('./routes/user.route');
 
 const port = 3000;
@@ -23,7 +26,7 @@ app.get('/', (req,res) =>{
     });
 });
 
-app.use('/users', userRoute);
+app.use('/users',authMiddleware.requireAuth, userRoute);
 app.use('/auth',authRoute)
 app.listen(port, function() {
     console.log(`Example app listening on port ${port}! `)
